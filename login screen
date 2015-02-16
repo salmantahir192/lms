@@ -1,0 +1,177 @@
+package GUI;
+
+public class LoginScreen extends javax.swing.JFrame {
+
+    public LoginScreen() {
+        initComponents();
+
+    }
+
+    @SuppressWarnings("unchecked")
+    // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
+    private void initComponents() {
+
+        jDesktopPane1 = new javax.swing.JDesktopPane();
+        userNamefield = new javax.swing.JTextField();
+        passwordField = new javax.swing.JPasswordField();
+        usernameLabel = new javax.swing.JLabel();
+        loginButton = new javax.swing.JLabel();
+        password_label = new javax.swing.JLabel();
+        login_backgroundImage = new javax.swing.JLabel();
+
+        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setBackground(new java.awt.Color(0, 0, 0));
+        setResizable(false);
+
+        jDesktopPane1.setBackground(new java.awt.Color(255, 255, 255));
+        userNamefield.setBounds(350, 420, 190, 30);
+        jDesktopPane1.add(userNamefield, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        passwordField.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyPressed(java.awt.event.KeyEvent evt) {
+                passwordFieldKeyPressed(evt);
+            }
+        });
+        passwordField.setBounds(350, 470, 190, 30);
+        jDesktopPane1.add(passwordField, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        usernameLabel.setForeground(new java.awt.Color(204, 0, 0));
+        usernameLabel.setText("Username");
+        usernameLabel.setBounds(270, 440, 60, 20);
+        jDesktopPane1.add(usernameLabel, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        loginButton.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Losgin.jpg"))); // NOI18N
+        loginButton.setText("jLabel7");
+        loginButton.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                loginButtonMouseClicked(evt);
+            }
+        });
+        loginButton.setBounds(560, 450, 40, 40);
+        jDesktopPane1.add(loginButton, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        password_label.setBackground(new java.awt.Color(255, 255, 255));
+        password_label.setForeground(new java.awt.Color(204, 0, 0));
+        password_label.setText("Password");
+        password_label.setBounds(270, 480, 60, 20);
+        jDesktopPane1.add(password_label, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        login_backgroundImage.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/login orange.jpg"))); // NOI18N
+        login_backgroundImage.setText("jLabel1");
+        login_backgroundImage.setBounds(10, 0, 850, 550);
+        jDesktopPane1.add(login_backgroundImage, javax.swing.JLayeredPane.DEFAULT_LAYER);
+
+        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
+        getContentPane().setLayout(layout);
+        layout.setHorizontalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 846, Short.MAX_VALUE)
+        );
+        layout.setVerticalGroup(
+            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jDesktopPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 548, Short.MAX_VALUE)
+        );
+
+        pack();
+    }// </editor-fold>//GEN-END:initComponents
+
+    private void loginButtonMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_loginButtonMouseClicked
+
+        login();
+    }//GEN-LAST:event_loginButtonMouseClicked
+
+    private void passwordFieldKeyPressed(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_passwordFieldKeyPressed
+        final int ASCIIofEnterkey = 10;
+        if (evt.getKeyCode() == ASCIIofEnterkey) {
+            login();
+        }
+    }//GEN-LAST:event_passwordFieldKeyPressed
+
+    /**
+     *
+     * @param args
+     */
+    public static void main(String args[]) {
+        java.awt.EventQueue.invokeLater(new Runnable() {
+            @Override
+            public void run() {
+                new LoginScreen().setVisible(true);
+            }
+        });
+    }
+    // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JDesktopPane jDesktopPane1;
+    private javax.swing.JLabel loginButton;
+    private javax.swing.JLabel login_backgroundImage;
+    private javax.swing.JPasswordField passwordField;
+    private javax.swing.JLabel password_label;
+    private javax.swing.JTextField userNamefield;
+    private javax.swing.JLabel usernameLabel;
+    // End of variables declaration//GEN-END:variables
+
+    private void initializeManagerControlPanel() {
+        Manager_ControlPanel.main();
+    }
+
+    private void initializeLibraryPanel() {
+        LibControlPanel.main();
+    }
+
+    private void login() {
+
+        String userName = userNamefield.getText();
+        String password = new String(passwordField.getPassword());
+
+        if (userName.equals("") && (password.equals(""))) {
+
+//            try {
+//                DB_Connector.connect();
+//                
+//            } catch (SQLException ex) {
+//                Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            this.dispose();
+            initializeLibraryPanel();
+
+        } else if (userName.equals("manager") && password.equals("manager")) {
+            this.dispose();
+//            try {
+//                DB_Connector.connect();
+//            } catch (SQLException ex) {
+//                Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+//            }
+            initializeManagerControlPanel();
+        } //        else {
+        //            try {
+        //                DB_Connector.connect();
+        //                isDbConnected =DB_Connector.login(userName,password);
+        //                if(isDbConnected)
+        //                {
+        //                    this.dispose();
+        //                    StudentPanel.main(userName);
+        //                    try {
+        //                        DB_Connector.connect();
+        //                    } catch (SQLException ex) {
+        //                        Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+        //                    }
+        //                }
+        //                
+        //                else {
+        //                    JOptionPane.showMessageDialog(null, "Invalid username or password");
+        //                }
+        //               
+        //            } catch (SQLException ex) {
+        //                Logger.getLogger(LoginScreen.class.getName()).log(Level.SEVERE, null, ex);
+        //            }
+        //        }
+        else if (userName.equals("student") && password.equals("student")) {
+            String studentName = userName;
+            initializeStudentPanel(studentName);
+        }
+    }
+
+    private void initializeStudentPanel(String studentName) {
+        this.dispose();
+        StudentPanel.main(studentName);
+    }
+}
